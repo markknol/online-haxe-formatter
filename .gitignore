@@ -1,4 +1,4 @@
-bin/
+bin/online-formatter.js
 .git
 node_modules
 *.orig
