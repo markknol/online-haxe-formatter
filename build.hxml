@@ -1,0 +1,16 @@
+-main Main
+-cp src/
+-js bin/online-formatter.js
+-dce full
+-D analyzer-optimize
+-lib formatter
+-lib json2object
+-lib tokentree
+-lib compiletime
+-lib hxparse
+-lib haxeparser
+-lib coconut.vdom
+
+-lib uglifyjs
+-D uglifyjs_overwrite
+#-D uglifyjs_disabled

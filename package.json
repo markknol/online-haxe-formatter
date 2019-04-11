@@ -1,0 +1,15 @@
+{
+  "name": "online-formatter",
+  "version": "0.0.1",
+  "scripts": {
+    "haxe": "haxe",
+    "neko": "neko",
+    "postinstall": "lix download",
+    "lix": "lix",
+    "haxelib": "haxelib"
+  },
+  "devDependencies": {
+    "lix": "^15.3.11",
+    "uglify-js": "^3.5.4"
+  }
+}

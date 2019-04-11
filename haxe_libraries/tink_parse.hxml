@@ -1,0 +1,4 @@
+-D tink_parse=0.2.0
+# @install: lix --silent download "gh://github.com/haxetink/tink_parse#c7094a8e1e19624bfb1e1eda0718a43ba1ec1f66" into tink_parse/0.2.0/github/c7094a8e1e19624bfb1e1eda0718a43ba1ec1f66
+-lib tink_core
+-cp ${HAXE_LIBCACHE}/tink_parse/0.2.0/github/c7094a8e1e19624bfb1e1eda0718a43ba1ec1f66/src
