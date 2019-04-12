@@ -22,12 +22,21 @@ class Main {
 class Root extends View {
 	@:state var codeString:String = "class Main\n{\n\n\n\n}";
 	@:state var configString:String = "{}";
+	@:state var configIsValid:Bool = true;
 
 	@:const var entryPoints = TokenTreeEntryPoint.createAll();
 	@:state var entryPoint:TokenTreeEntryPoint = TokenTreeEntryPoint.TYPE_LEVEL;
 	
 	var _config:Config = new Config();
-	@:computed var config:Config = { _config.readConfigFromString(configString, "unknown"); _config; }
+	@:computed var config:Config = {
+		try {
+			configIsValid = true;
+			_config.readConfigFromString(configString, "unknown");
+		} catch (e:Any) {
+			configIsValid = false;
+		}
+		_config;
+	}
 	@:computed var formatterResult:Result = Formatter.format(Code(codeString), config, null, entryPoint);
 
 	var _formattedCode:String;
@@ -56,10 +65,10 @@ class Root extends View {
 				<textarea oninput=${configString = (cast event.target:TextAreaElement).value}>$configString</textarea>
 			</section>
 			<footer class="status">
-				<strong>Mode</strong> ${Std.string(entryPoint)} | 
-				<strong>Status</strong>
+				<strong>Mode</strong>${Std.string(entryPoint)} | 
+				<if {!configIsValid}> <span class="label-error">Broken hxformat.json</span> | </if>
 				<switch ${formatterResult}>
-					<case ${Success(code)}> <span class="label-success">Valid!</span>
+					<case ${Success(code)}> 
 					<case ${Failure(error)}> <span class="label-error">${error}</span>
 					<case ${Disabled}> <span class="label-disabled">Disabled</span>
 				</switch>
