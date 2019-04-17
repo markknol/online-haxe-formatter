@@ -1,0 +1,3 @@
+-D lzstring=0.0.1
+# @install: lix --silent download "haxelib:/lzstring#0.0.1" into lzstring/0.0.1/haxelib
+-cp ${HAXE_LIBCACHE}/lzstring/0.0.1/haxelib/src

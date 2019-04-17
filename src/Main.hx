@@ -2,6 +2,7 @@ package ;
 
 import formatter.Formatter;
 import formatter.config.Config;
+import js.Browser;
 import js.html.SelectElement;
 import js.html.TextAreaElement;
 import tokentree.TokenTreeBuilder.TokenTreeEntryPoint;
@@ -9,24 +10,37 @@ import tokentree.TokenTreeBuilder.TokenTreeEntryPoint;
 import coconut.Ui.hxx;
 import coconut.ui.View;
 import js.Browser.document;
+import lzstring.LZString;
 
 /**
 	@author Mark Knol
 **/
 class Main {
 	public static function main() {
-		coconut.ui.Renderer.mount(cast document.body.appendChild(document.createElement("main")), hxx('<Root />'));
+		coconut.ui.Renderer.mount(cast document.body.appendChild(document.createElement("main")), hxx('<Root  />'));
 	}
 }
 
 class Root extends View {
-	@:const var formatterVersion:String = Macro.getVersion();
-	@:state var codeString:String = "class Main\n{\n\n\n\n}";
-	@:state var configString:String = "{}";
-	@:state var configIsValid:Bool = true;
-
+	@:const var formatterVersion:String = haxe.macro.Compiler.getDefine("formatter");
 	@:const var entryPoints = TokenTreeEntryPoint.createAll();
+	
+	@:state var codeString:String = getFromStorage('code', "class Main\n{\n\n\n\n}");
+	@:state var configString:String = getFromStorage('config', "{}");
+	
+	@:state var configIsValid:Bool = true;
 	@:state var entryPoint:TokenTreeEntryPoint = TokenTreeEntryPoint.TYPE_LEVEL;
+	
+	var _encoder = new LZString();
+	inline function getFromStorage(key:String, fallback:String):String {
+		var hash = js.Browser.location.hash;
+		trace(hash.substr(1));
+		if (hash.length>1) {
+			var data:haxe.DynamicAccess<String> = haxe.Json.parse(_encoder.decompressFromEncodedURIComponent(hash.substr(1)));
+			return data.get(key);
+		}
+		return fallback;
+	}
 	
 	var _config:Config = new Config();
 	@:computed var config:Config = {
@@ -46,6 +60,11 @@ class Root extends View {
 		case Failure(_) | Disabled: _formattedCode;
 	}
 	
+	function store(value) {
+		js.Browser.location.hash = _encoder.compressToEncodedURIComponent(haxe.Json.stringify({code:codeString, config:configString }));
+		return value;
+	}
+	
 	function render()
 		<div>
 			<select onchange=${entryPoint = entryPoints[(cast event.target:SelectElement).selectedIndex]}>
@@ -55,7 +74,7 @@ class Root extends View {
 			</select>
 			<section class="well active">
 				Input code:
-				<textarea oninput=${codeString = (cast event.target:TextAreaElement).value}>$codeString</textarea>
+				<textarea oninput=${codeString = store((cast event.target:TextAreaElement).value)}>$codeString</textarea>
 			</section>
 			<section class="well">
 				Formatted code:
@@ -63,7 +82,7 @@ class Root extends View {
 			</section>
 			<section class="well active">
 				hxformat.json configuration file:
-				<textarea oninput=${configString = (cast event.target:TextAreaElement).value}>$configString</textarea>
+				<textarea oninput=${configString = store((cast event.target:TextAreaElement).value)}>$configString</textarea>
 			</section>
 			<footer class="status">
 				<if {!configIsValid}> <span class="label-error">Broken hxformat.json</span> <span class='pipe'>|</span> </if>

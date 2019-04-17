@@ -10,6 +10,7 @@
 -lib hxparse
 -lib haxeparser
 -lib coconut.vdom
+-lib lzstring
 
 -lib uglifyjs
 -D uglifyjs_overwrite

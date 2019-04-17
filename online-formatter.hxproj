@@ -42,11 +42,12 @@
     <class path="C:\Users\mark\AppData\Roaming\haxe\haxe_libraries\pick.first\0.0.0\github\533af8000b87079c66fb6128f40403b2a5178f81\src" />
     <class path="C:\Users\mark\AppData\Roaming\haxe\haxe_libraries\xDOM\0.1.0\github\a3e3f092cd62db94a06edf40f1c819cf38fe27c1\src" />
     <class path="C:\Users\mark\AppData\Roaming\haxe\haxe_libraries\coconut.vdom\0.5.0\github\6d0fa1b9e24a824682b1e80cfbdfe9503aa1cf12\src" />
+    <class path="C:\Users\mark\AppData\Roaming\haxe\haxe_libraries\lzstring\0.0.1\haxelib\src" />
     <class path="C:\Users\mark\AppData\Roaming\haxe\haxe_libraries\uglifyjs\0.0.91\haxelib\src" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="analyzer-optimize&#xA;formatter=1.6.0&#xA;json2object=3.6.1&#xA;hxjsonast=1.0.1&#xA;tokentree=1.0.18&#xA;compiletime=2.7.0&#xA;hxparse=4.0.0&#xA;haxeparser=3.3.0&#xA;coconut.vdom=0.5.0&#xA;coconut.diffing=0.0.0&#xA;coconut.ui=0.9.0&#xA;tink_hxx=0.21.0&#xA;tink_anon=0.3.3&#xA;tink_macro=0.17.4&#xA;tink_core=1.21.0&#xA;tink_parse=0.2.0&#xA;coconut.data=0.8.1&#xA;tink_state=0.10.1&#xA;tink_lang=0.6.2&#xA;tink_syntaxhub=0.3.6&#xA;tink_priority=0.1.3&#xA;tink_pure=0.3.2&#xA;tink_slice=0.1.0&#xA;coconut_ui&#xA;hxx_fragment=coconut.diffing.VNode.fragment&#xA;xDOM=0.1.0&#xA;tink_domspec=0.1.2&#xA;pick.first=0.0.0&#xA;coconut_vdom&#xA;uglifyjs=0.0.91&#xA;uglifyjs_overwrite" />
+    <option directives="analyzer-optimize&#xA;formatter=1.6.0&#xA;json2object=3.6.1&#xA;hxjsonast=1.0.1&#xA;tokentree=1.0.18&#xA;compiletime=2.7.0&#xA;hxparse=4.0.0&#xA;haxeparser=3.3.0&#xA;coconut.vdom=0.5.0&#xA;coconut.diffing=0.0.0&#xA;coconut.ui=0.9.0&#xA;tink_hxx=0.21.0&#xA;tink_anon=0.3.3&#xA;tink_macro=0.17.4&#xA;tink_core=1.21.0&#xA;tink_parse=0.2.0&#xA;coconut.data=0.8.1&#xA;tink_state=0.10.1&#xA;tink_lang=0.6.2&#xA;tink_syntaxhub=0.3.6&#xA;tink_priority=0.1.3&#xA;tink_pure=0.3.2&#xA;tink_slice=0.1.0&#xA;coconut_ui&#xA;hxx_fragment=coconut.diffing.VNode.fragment&#xA;xDOM=0.1.0&#xA;tink_domspec=0.1.2&#xA;pick.first=0.0.0&#xA;coconut_vdom&#xA;lzstring=0.0.1&#xA;uglifyjs=0.0.91&#xA;uglifyjs_overwrite&#xA;uglifyjs_disabled" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="Main" />
