@@ -20,6 +20,7 @@ class Main {
 }
 
 class Root extends View {
+	@:const var formatterVersion:String = Macro.getVersion();
 	@:state var codeString:String = "class Main\n{\n\n\n\n}";
 	@:state var configString:String = "{}";
 	@:state var configIsValid:Bool = true;
@@ -65,13 +66,14 @@ class Root extends View {
 				<textarea oninput=${configString = (cast event.target:TextAreaElement).value}>$configString</textarea>
 			</section>
 			<footer class="status">
-				<strong>Mode</strong>${Std.string(entryPoint)} | 
-				<if {!configIsValid}> <span class="label-error">Broken hxformat.json</span> | </if>
+				<if {!configIsValid}> <span class="label-error">Broken hxformat.json</span> <span class='pipe'>|</span> </if>
 				<switch ${formatterResult}>
-					<case ${Success(code)}> 
-					<case ${Failure(error)}> <span class="label-error">${error}</span>
+					<case ${Success(code)}> <strong>Mode</strong>${Std.string(entryPoint)} <span class='pipe'>|</span> haxe-formatter ${formatterVersion}
+					<case ${Failure(error)}> <span class="label-error">${error} </span>
 					<case ${Disabled}> <span class="label-disabled">Disabled</span>
 				</switch>
 			</footer>
 		</div>;
 }
+
+
