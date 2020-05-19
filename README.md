@@ -3,11 +3,11 @@
 ### Dependencies
 
 This project uses [lix.pm](https://github.com/lix-pm/lix.client) as Haxe package manager.
-Run `npm install` to install the dependencies.
+Run `yarn` to install all dependencies (including Haxe). 
 
-### Compile js
+### Compile
 
 ```
-npm run haxe build.hxml
+yarn haxe build.hxml
 ```
 
