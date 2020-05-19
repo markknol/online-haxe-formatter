@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "lix": "^15.3.11",
-    "uglify-js": "^3.5.4"
+    "terser": "^4.7.0"
   }
 }

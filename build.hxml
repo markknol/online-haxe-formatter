@@ -12,6 +12,9 @@
 -lib coconut.vdom
 -lib lzstring
 
+-D js-es=6
+
 -lib uglifyjs
 -D uglifyjs_overwrite
 #-D uglifyjs_disabled
+-D uglifyjs_bin=node_modules/.bin/terser

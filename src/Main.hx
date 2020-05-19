@@ -43,7 +43,7 @@ class Root extends View {
 	}
 	
 	var _config:Config = new Config();
-	@:computed var config:Config = {
+	@:skipCheck @:computed var config:Config = {
 		try {
 			configIsValid = true;
 			_config.readConfigFromString(configString, "unknown");
