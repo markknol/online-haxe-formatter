@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "lix": "^15.3.11",
-    "terser": "^4.7.0"
+    "terser": "^4.8.1"
   }
 }
